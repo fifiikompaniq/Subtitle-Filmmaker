@@ -1,16 +1,17 @@
 import speech_recognition as sr
-import moviepy as mp
+from moviepy.editor import *
 
-video_clip = mp.VideoFileClip("E:\Subtitle-Filmmaker\\tests\\test.mp4")
+video_clip = VideoFileClip("E:\Subtitle-Filmmaker\main\\test.mp4")
 audio_clip = video_clip.audio
 
+audio_clip.write_audiofile("audio_file.mp3", 44100, 2, 2000)
 recognizer = sr.Recognizer()
 
-with sr.AudioFile(audio_clip) as source: 
+with sr.AudioFile("audio_file.mp3") as source: 
     audio = recognizer.record(source)
     
 try: 
-    with fopen("transcribe.txt", "w+") as transcript: 
+    with open("transcribe.txt", "w+") as transcript: 
         transcript.write("{}".format(recognizer.recognize_sphinx(audio)))
 except sr.UnknownValueError: 
     print("Could not understand audio.")
