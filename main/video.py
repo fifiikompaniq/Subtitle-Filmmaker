@@ -1,3 +1,7 @@
-from moviepy import VideoFileClip
+from moviepy.editor import VideoFileClip
 
-clip = VideoFileClip("")
+with open("subtitles.srt", "r") as file: 
+    for line in file: 
+        timestamp = tuple(line)
+        
+
