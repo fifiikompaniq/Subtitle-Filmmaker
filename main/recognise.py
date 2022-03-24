@@ -1,3 +1,10 @@
+"""
+    Using Speech Recognition, we're able to recognise plain speech and convert it to text.
+    Using the timestamps from "vad.py", we recognise the speech between the timestamps in order to make it more
+    efficient, but extend the timestamps in the .srt file so the subtitles stay for longer. 
+    We take  
+
+"""
 import speech_recognition as sr
 from moviepy.editor import *
 from os import path
